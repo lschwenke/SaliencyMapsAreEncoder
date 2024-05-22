@@ -418,7 +418,6 @@ class ExperimentWrapper:
                                 rftDict['testReduction'] = []
 
                             rftDict = rfDict[str(threshold)]
-                            subrftDict = rftDict['approx data']
 
                             rftDict['trainPred'].append(trainPred2)
                             rftDict['trainAcc'].append(trainAcc2)
