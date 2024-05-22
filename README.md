@@ -29,7 +29,7 @@ pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --e
 
 Fruther install: <br>
 
-pip install sacred==0.8.4 seml==0.3.7 imbalanced-learn==0.11.0 dill==0.3.7 pyts==0.11.0 transformer_encoder==0.0.3 grad-cam==1.4.8 captum==0.6.0 numpy==1.24.4 scipy==1.11.3 scikit-learn==1.3.1 matplotlib==3.8.0  <br>
+pip install sacred==0.8.4 seml==0.3.7 imbalanced-learn==0.11.0 dill==0.3.7 pyts==0.11.0 transformer_encoder==0.0.3 grad-cam==1.4.8 captum==0.6.0 numpy==1.24.4 scipy==1.11.3 scikit-learn==1.3.1 matplotlib==3.8.0 shap==0.45.1 einops==0.8.0 <br>
 
 
 Note, sometimes a cv2 package is missing. In that case use: pip install opencv-python-headless <br>
@@ -50,6 +50,9 @@ The experiments are set up to work with SEML on our cluster. Change the .yaml fi
 4. Check with "seml saliencyCollect status" till all your experiments are finished 
 5. Please find the results in the presults or filteredResults folder. It includes a dict which can be explored with the code in resultResultProcessing.ipynb
 
+## Reference
+
+Transformer and LRP implementations are taken and adapted from https://github.com/hila-chefer/Transformer-Explainability
 
 ## Cite and publications
 
