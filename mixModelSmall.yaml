@@ -1,0 +1,75 @@
+seml:
+  executable: saliencyCollect.py
+  name: saliencyCollect
+  output_dir: logs
+  project_root_dir: .
+
+
+slurm:
+  experiments_per_job: 4
+  max_simultaneous_jobs: 6  # Restrict number of simultaneously running jobs per job array
+  sbatch_options:
+    gres: gpu:1       # num GPUs
+    mem: 300G          # memory
+    cpus-per-task: 64  # num cores
+    time: 5-08:00     # max time, D-HH:MM
+
+fixed:
+  init.nrFolds: 5
+  init.patience: 50
+  init.seed_value: 42
+
+
+  model.stride: 1
+  model.kernal_size: 3
+  model.nc: 1
+  model.useSaves: False
+  
+  model.methods: {'CNN': {LRP: [full], 'captum': ['IntegratedGradients', 'DeepLift', 'KernelShap', 'GuidedGradCam', 'FeaturePermutation', 'Deconvolution'], 'PytGradCam': ['GradCAMPlusPlus', 'GradCAM']}, 'Transformer': {LRP: [full, rollout, transformer_attribution], 'captum': ['IntegratedGradients', 'DeepLift', 'KernelShap', 'GuidedGradCam', 'FeaturePermutation'], 'PytGradCam': ['GradCAMPlusPlus', 'GradCAM'], 'Attention':['.']}, 'Tree': {SHAP: ['.']}}
+  model.thresholdSet: [1.0,0.8,0.5,'baseline']
+
+  data.dataset: Andor
+
+grid:
+  data.toplevel:
+    type: choice
+    options: 
+      - and
+      - or
+      - xor
+
+  data.test_size:
+    type: choice
+    options:
+      - 0
+      - 0.1
+      #- 0.5
+
+  model.hypers:
+    type: choice
+    options:
+      - ['Transformer', 500, 64, 0.5, True, True, 4 ,  2, 0 , 0, True]
+      - ['Transformer', 500, 64, 0.5, True, True, 4 ,  2, 0 , 0.3, True]
+      - ['Transformer', 500, 64, 0.5, True, True, 4 ,  2, 0 , 0, False]
+      - ['Transformer', 500, 64, 0.5, True, True, 4 ,  2, 0 , 0.3, False]
+      - ['CNN', 500, 8, 1, True , True , 0 ,  2, 0 , 0, False]
+      - ['CNN', 500, 8, 1, False , True , 0 ,  2, 0 , 0, False]
+      - ['CNN', 500, 8, 1, True , False , 0 ,  2, 0 , 0, False]
+      - ['CNN', 500, 8, 1, False , False , 0 ,  2, 0 , 0, False]
+
+
+simpleSmallBinaryAndor:
+  fixed: 
+    data.symbols: 2
+    model.batch_size: 10
+    data.nrEmpty: 2
+    data.andStack: 1
+    data.orStack: 1
+    data.xorStack: 1
+    data.nrAnds: 2
+    data.nrOrs: 2
+    data.nrxor: 2
+    data.trueIndexes: [1]
+    data.orOffSet: 0
+    data.xorOffSet: 0
+    data.redaundantIndexes: []
