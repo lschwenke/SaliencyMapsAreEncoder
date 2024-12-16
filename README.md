@@ -1,5 +1,5 @@
 # SaliencyMapsAreEncoder
-This is the experiment code for the paper "Saliency Maps Are Encoder: Analysing Logical Relations Towards Interpretation". It contains the logical dataset-framework ANDOR and uses multiple Saliency Methods to verify different metrics.
+This is the experiment code for the paper "Saliency Maps Are Encoders: Analysing Logical Relations Towards Interpretation". It contains the logical dataset-framework ANDOR and uses multiple Saliency Methods to verify different metrics.
 
 ## ANDOR
 
@@ -57,6 +57,6 @@ Transformer and LRP implementations are taken and adapted from https://github.co
 ## Cite and publications
 
 This code represents the used model for the following publication:<br>
-"Saliency Maps Are Encoder: Analysing Logical Relations Towards Interpretation" (TODO Link)
+"Saliency Maps Are Encoders: Analysing Logical Relations Towards Interpretation" (TODO Link)
 
 If you use, build upon this work or if it helped in any other way, please cite the linked publication.
